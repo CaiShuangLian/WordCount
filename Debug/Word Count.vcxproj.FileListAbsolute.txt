@@ -1,0 +1,2 @@
+E:\GitHub\Word Count\Debug\Word Count.exe
+E:\GitHub\Word Count\Debug\Word Count.pdb
