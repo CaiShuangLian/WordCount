@@ -16,29 +16,22 @@ Word Count ver1.0
 void Run(char Type, char Type2, char* Path);
 
 int CodeCount(char* Path) {	//计算字符个数
-
 	FILE* file = fopen(Path, "r");
 	assert(file != NULL);	//若文件不存在则报错
-
 	char code;
 	int count = 0;
-
 	while ((code = fgetc(file)) != EOF) 	//读取字符直到结束
-		count += ((code != ' ') && (code != '\n') && (code != '\t'));	//判断是否是字符	
-
+		count += ((code != ' ') && (code != '\n') && (code != '\t'));	//判断是否是字符
 	fclose(file);
-
 	return count;
 }
 
 int WordCount(char* Path) {	//计算单词个数
-
 	FILE* file = fopen(Path, "r");
 	assert(file != NULL);
 	char word;
 	int is_word = 0;	//用于记录字符是否处于单词中
 	int count = 0;
-
 	while ((word = fgetc(file)) != EOF) {
 		if ((word >= 'a' && word <= 'z') || (word >= 'A' && word <= 'Z')) {	//判断是否是字母			
 			count += (is_word == 0);
@@ -48,7 +41,6 @@ int WordCount(char* Path) {	//计算单词个数
 			is_word = 0;	//记录不处于单词状态
 	}
 	fclose(file);
-
 	return count;
 }
 
@@ -67,8 +59,6 @@ int LineCount(char* Path) {	//计算行数
 
 	return count;
 }
-
-
 
 void Scan(char* Path, char Type) {
 	char* FileName = NULL;
@@ -135,34 +125,19 @@ void Scan(char* Path, char Type) {
 
 void Run(char Type, char Type2, char* Path) {
 	switch (Type) {
-	case 'c': printf("\ncode count: %d\n", CodeCount(Path)); break;
+	case 'c': printf("\ncode count: %d\n", CodeCount(Path)); printf("word count: %d\n", WordCount(Path)); break;
 	case 'w': printf("word count: %d\n", WordCount(Path)); break;
-			  printf("line count: %d", LineCount(Path)); 
-			  break;
+	case 'l': printf("line count: %d", LineCount(Path)); break;
 	case 's': Scan(Path, Type2); break;
 	default: printf("type input error"); break;
 	}
 }
 
-int main(int argc, char* argv[]) {
-
+int main(){
 	char Path[100] = "*.txt";	//默认参数
 	char Type = 's';
 	char Type2 = 'c';
-
-	if (argv[1]) {	//有输入参数则以输入为准
-		Type = *(argv[1] + 1);
-		if (Type == 's') {
-			Type2 = *(argv[2] + 1);
-			strcpy(Path, argv[3]);
-		}
-		else
-			strcpy(Path, argv[2]);
-	}
-
 	Run(Type, Type2, Path);	//调用启动函数
-
 	getchar();
-
 	return 0;
 }

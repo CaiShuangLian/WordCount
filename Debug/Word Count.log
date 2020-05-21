@@ -1,4 +1,4 @@
 ﻿  WordCount.c
-E:\GitHub\Word Count\WordCount.c(125,19): warning C4047: “函数”:“char”与“void *”的间接级别不同
-E:\GitHub\Word Count\WordCount.c(125,19): warning C4024: “Run”: 形参和实参 2 的类型不同
+E:\GitHub\Word Count\WordCount.c(115,19): warning C4047: “函数”:“char”与“void *”的间接级别不同
+E:\GitHub\Word Count\WordCount.c(115,19): warning C4024: “Run”: 形参和实参 2 的类型不同
   Word Count.vcxproj -> E:\GitHub\Word Count\Debug\Word Count.exe
